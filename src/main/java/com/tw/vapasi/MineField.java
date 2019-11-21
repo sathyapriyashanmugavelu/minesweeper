@@ -19,6 +19,16 @@ public class MineField {
         }
     }
 
+    public String play(int row, int col, char action) throws SteppedOnMineException {
+        if(action=='F'){
+            flagCell(row,col,action);
+        }else {
+            openCell(row, col, action);
+        }
+        return MineGridStatus.GAME_WIN.status();
+    }
+
+
     public void flagCell(int row, int col,char action){
         Grid openedCell = grid.get(row * length + col);
         openedCell.setDisplayChar(action);

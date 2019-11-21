@@ -31,4 +31,19 @@ public class MineFieldTest {
         assertThrows(SteppedOnMineException.class,()->minefield.openCell(1,1,'O'));
     }
 
+    @Test
+    public void shouldNotThrowExceptionWhenOpenOnNotMine() throws SteppedOnMineException {
+        MineField minefield = new MineField("xx,xm");
+        assertDoesNotThrow(()->minefield.openCell(1,0,'O'));
+    }
+
+    @Test
+    public void shouldDisplayWinWhenAllGridsTraversedCorrectly() throws SteppedOnMineException {
+        MineField minefield = new MineField("xx,xm");
+        minefield.play(0,0,'O');
+        minefield.play(0,1,'O');
+        minefield.play(1,0,'O');
+        assertEquals("Wow, you cleared the minefield ! Game Over !",minefield.play(1,1,'F'));
+    }
+
 }
