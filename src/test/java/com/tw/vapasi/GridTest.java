@@ -16,4 +16,10 @@ public class GridTest {
         Grid grid=new Grid(0,0,'x');
         assertEquals(false,grid.getIsMine());
     }
+
+    @Test
+    public void ShouldDisplayCharBeXWhenMineField(){
+        Grid grid=new Grid(0,0,'m');
+        assertEquals('X',grid.getDisplayChar());
+    }
 }

@@ -10,6 +10,15 @@ public class Grid {
         this.row=row;
         this.column=column;
         this.isMine = (ch == 'm');
+        this.displayChar = 'X';
+    }
+
+    public char getDisplayChar() {
+        return displayChar;
+    }
+
+    public void setDisplayChar(char displayChar) {
+        this.displayChar = displayChar;
     }
 
     public boolean getIsMine() {
