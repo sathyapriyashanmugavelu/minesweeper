@@ -24,9 +24,13 @@ public class MineField {
         openedCell.setDisplayChar(action);
     }
 
-    public void openCell(int row, int col,char action) {
+    public void openCell(int row, int col,char action) throws SteppedOnMineException {
         Grid openedCell = grid.get(row * length + col);
         openedCell.setDisplayChar(action);
+        if (openedCell.getIsMine() && openedCell.getDisplayChar() == 'O') {
+            throw new SteppedOnMineException();
+        }
+
     }
 
 //    public void displayMatrix() {

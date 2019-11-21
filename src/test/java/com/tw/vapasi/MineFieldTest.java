@@ -3,6 +3,8 @@ package com.tw.vapasi;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class MineFieldTest {
     @Test
@@ -15,11 +17,18 @@ public class MineFieldTest {
     }
 
     @Test
-    public void shouldOpenWhenGridActionIsOpenAndNotMine() {
+    public void shouldOpenWhenGridActionIsOpenAndNotMine() throws SteppedOnMineException {
         MineField minefield = new MineField("xx,xm");
         Grid grid=new Grid(1,0,'O');
         grid.setDisplayChar('O');
-        minefield.flagCell(1,0,'O');
+        minefield.openCell(1,0,'O');
         assertEquals('O',grid.getDisplayChar());
     }
+
+    @Test
+    public void shouldThrowExceptionWhenOpenOnMine() throws SteppedOnMineException {
+        MineField minefield = new MineField("xx,xm");
+        assertThrows(SteppedOnMineException.class,()->minefield.openCell(1,1,'O'));
+    }
+
 }
