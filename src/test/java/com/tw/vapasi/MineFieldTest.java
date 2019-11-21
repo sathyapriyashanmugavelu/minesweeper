@@ -13,4 +13,13 @@ public class MineFieldTest {
         minefield.flagCell(0,0,'F');
         assertEquals('F',grid.getDisplayChar());
     }
+
+    @Test
+    public void shouldOpenWhenGridActionIsOpenAndNotMine() {
+        MineField minefield = new MineField("xx,xm");
+        Grid grid=new Grid(1,0,'O');
+        grid.setDisplayChar('O');
+        minefield.flagCell(1,0,'O');
+        assertEquals('O',grid.getDisplayChar());
+    }
 }

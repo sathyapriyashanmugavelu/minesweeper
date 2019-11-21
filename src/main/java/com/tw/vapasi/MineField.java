@@ -24,6 +24,11 @@ public class MineField {
         openedCell.setDisplayChar(action);
     }
 
+    public void openCell(int row, int col,char action) {
+        Grid openedCell = grid.get(row * length + col);
+        openedCell.setDisplayChar(action);
+    }
+
 //    public void displayMatrix() {
 //        for (int i = 0; i < length; i++) {
 //            for (int j = 0; j < length; j++) {
