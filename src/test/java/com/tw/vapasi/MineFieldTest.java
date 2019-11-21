@@ -46,4 +46,12 @@ public class MineFieldTest {
         assertEquals("Wow, you cleared the minefield ! Game Over !",minefield.play(1,1,'F'));
     }
 
+    @Test
+    public void shouldDisplayContinueWhenAllGridsNotTraversedCorrectly() throws SteppedOnMineException {
+        MineField minefield = new MineField("xx,xm");
+        minefield.play(0,0,'O');
+        minefield.play(0,1,'O');
+        assertEquals("Continue Playing",minefield.play(1,1,'F'));
+    }
+
 }
