@@ -22,4 +22,10 @@ public class GridTest {
         Grid grid=new Grid(0,0,'m');
         assertEquals('X',grid.getDisplayChar());
     }
+
+    @Test
+    public void ShouldDisplayCharBeXWhenNotMineField(){
+        Grid grid=new Grid(0,0,'x');
+        assertEquals('X',grid.getDisplayChar());
+    }
 }
