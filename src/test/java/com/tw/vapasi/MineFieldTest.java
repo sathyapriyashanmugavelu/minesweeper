@@ -12,7 +12,7 @@ public class MineFieldTest {
         MineField minefield = new MineField("xx,xm");
         Grid grid=new Grid(0,0,'F');
         grid.setDisplayChar('F');
-        minefield.flagCell(0,0,'F');
+        minefield.flagGrid(0,0,'F');
         assertEquals('F',grid.getDisplayChar());
     }
 
@@ -21,20 +21,20 @@ public class MineFieldTest {
         MineField minefield = new MineField("xx,xm");
         Grid grid=new Grid(1,0,'O');
         grid.setDisplayChar('O');
-        minefield.openCell(1,0,'O');
+        minefield.openGrid(1,0,'O');
         assertEquals('O',grid.getDisplayChar());
     }
 
     @Test
     public void shouldThrowExceptionWhenOpenOnMine() throws SteppedOnMineException {
         MineField minefield = new MineField("xx,xm");
-        assertThrows(SteppedOnMineException.class,()->minefield.openCell(1,1,'O'));
+        assertThrows(SteppedOnMineException.class,()->minefield.openGrid(1,1,'O'));
     }
 
     @Test
     public void shouldNotThrowExceptionWhenOpenOnNotMine() throws SteppedOnMineException {
         MineField minefield = new MineField("xx,xm");
-        assertDoesNotThrow(()->minefield.openCell(1,0,'O'));
+        assertDoesNotThrow(()->minefield.openGrid(1,0,'O'));
     }
 
     @Test

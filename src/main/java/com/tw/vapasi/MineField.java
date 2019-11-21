@@ -1,9 +1,7 @@
 package com.tw.vapasi;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MineField {
     private List<Grid> grid;
@@ -23,9 +21,9 @@ public class MineField {
 
     public String play(int row, int col, char action) throws SteppedOnMineException {
         if(action=='F'){
-            flagCell(row,col,action);
+            flagGrid(row,col,action);
         }else {
-            openCell(row, col, action);
+            openGrid(row, col, action);
         }
         for (Grid mineGrid : grid) {
             if (!mineGrid.getIsMine() && mineGrid.getDisplayChar() != 'O')
@@ -34,12 +32,12 @@ public class MineField {
         return MineGridStatus.GAME_WIN.status();
     }
 
-    public void flagCell(int row, int col,char action){
+    public void flagGrid(int row, int col, char action){
         Grid openedCell = grid.get(row * length + col);
         openedCell.setDisplayChar(action);
     }
 
-    public void openCell(int row, int col,char action) throws SteppedOnMineException {
+    public void openGrid(int row, int col, char action) throws SteppedOnMineException {
         Grid openedCell = grid.get(row * length + col);
         openedCell.setDisplayChar(action);
         if (openedCell.getIsMine() && openedCell.getDisplayChar() == 'O') {
