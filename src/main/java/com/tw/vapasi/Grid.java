@@ -6,11 +6,14 @@ public class Grid {
     private int column;
     private char displayChar;
 
+    public Grid() {
+    }
+
     public Grid(int row, int column, char ch) {
-        this.row=row;
-        this.column=column;
+        this.row = row;
+        this.column = column;
         this.isMine = (ch == 'm');
-        this.displayChar = 'X';
+        this.displayChar = State.INITIAL.getActionChar();
     }
 
     public char getDisplayChar() {
@@ -23,5 +26,13 @@ public class Grid {
 
     public boolean getIsMine() {
         return this.isMine;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
     }
 }
