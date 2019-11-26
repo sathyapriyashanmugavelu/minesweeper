@@ -9,9 +9,8 @@ public class PlayMineSweeper {
         mineField0.setMineField(inputString0);
         MineFieldIPrintImpl mineSweeperIPrint0 = new MineFieldIPrintImpl();
 
-        Grid grid0 = new Grid(0, 0, State.OPEN.getActionChar());
-        grid0.setDisplayChar(State.OPEN.getActionChar());
-        mineField0.play(grid0);
+        Cell cell0 = new Cell(0, 0, State.OPEN.getActionChar());
+        mineField0.play(cell0);
 
         //Game 2
         System.out.println("-----------------GAME STARTS------------------");
@@ -20,24 +19,20 @@ public class PlayMineSweeper {
         MineFieldIPrintImpl mineSweeperIPrint = new MineFieldIPrintImpl();
         mineField.setMineField(inputString);
 
-        Grid grid1 = new Grid(0, 0, State.OPEN.getActionChar());
-        grid1.setDisplayChar(State.OPEN.getActionChar());
-        mineField.play(grid1);
+        Cell cell1 = new Cell(0, 0, State.OPEN.getActionChar());
+        mineField.play(cell1);
         mineSweeperIPrint.print(mineField);
         mineField.isGameOver();
-        Grid grid2 = new Grid(0, 1, State.OPEN.getActionChar());
-        grid2.setDisplayChar(State.OPEN.getActionChar());
-        mineField.play(grid2);
+        Cell cell2 = new Cell(0, 1, State.OPEN.getActionChar());
+        mineField.play(cell2);
         mineSweeperIPrint.print(mineField);
         mineField.isGameOver();
-        Grid grid3 = new Grid(1, 0, State.OPEN.getActionChar());
-        grid3.setDisplayChar(State.OPEN.getActionChar());
-        mineField.play(grid3);
+        Cell cell3 = new Cell(1, 0, State.OPEN.getActionChar());
+        mineField.play(cell3);
         mineSweeperIPrint.print(mineField);
         mineField.isGameOver();
-        Grid grid4 = new Grid(1, 1, State.FLAG.getActionChar());
-        grid4.setDisplayChar(State.FLAG.getActionChar());
-        mineField.play(grid4);
+        Cell cell4 = new Cell(1, 1, State.FLAG.getActionChar());
+        mineField.play(cell4);
         mineSweeperIPrint.print(mineField);
         mineField.isGameOver();
     }

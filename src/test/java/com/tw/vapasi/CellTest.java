@@ -4,28 +4,28 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GridTest {
+public class CellTest {
     @Test
     public void ShouldIsMineBeTrueIfItIsMineField() {
-        Grid grid = new Grid(0, 0, 'm');
-        assertEquals(true, grid.getIsMine());
+        Cell cell = new Cell(0, 0, 'm');
+        assertEquals(true, cell.getIsMine());
     }
 
     @Test
     public void ShouldIsMineBeFalseWhenItIsNotMineField() {
-        Grid grid = new Grid(0, 0, 'x');
-        assertEquals(false, grid.getIsMine());
+        Cell cell = new Cell(0, 0, 'x');
+        assertEquals(false, cell.getIsMine());
     }
 
     @Test
     public void ShouldDisplayCharBeXWhenMineField() {
-        Grid grid = new Grid(0, 0, 'm');
-        assertEquals('X', grid.getDisplayChar());
+        Cell cell = new Cell(0, 0, 'm');
+        assertEquals('X', cell.getState().getActionChar());
     }
 
     @Test
     public void ShouldDisplayCharBeXWhenNotMineField() {
-        Grid grid = new Grid(0, 0, 'x');
-        assertEquals('X', grid.getDisplayChar());
+        Cell cell = new Cell(0, 0, 'x');
+        assertEquals('X', cell.getState().getActionChar());
     }
 }

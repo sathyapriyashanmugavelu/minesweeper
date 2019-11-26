@@ -3,78 +3,77 @@ package com.tw.vapasi;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MineFieldImpl implements MineField{
-    private List<Grid> grids;
+public class MineFieldImpl implements MineField {
+    private List<Cell> cells;
     private int dimension;
-    private Grid grid;
+    private Cell cell;
     public State state;
-    private int countOfCorrectGrids ;
+    private int countOfCorrectGrids;
 
     public MineFieldImpl() {
     }
 
-    public MineFieldImpl(Grid grid, State state) {
-        this.grid = grid;
+    public MineFieldImpl(Cell cell, State state) {
+        this.cell = cell;
         this.state = state;
     }
 
-    public List<Grid> setMineField(String inputString) {
-        grids = new ArrayList<Grid>();
+    public List<Cell> setMineField(String inputString) {
+        cells = new ArrayList<Cell>();
         final String[] input = inputString.split(",");
         dimension = input.length;
         for (int i = 0; i < dimension; i++) {
             String stringInput = input[i];
             for (int j = 0; j < dimension; j++) {
-                grids.add(new Grid(i,j,stringInput.charAt(j)));
+                cells.add(new Cell(i, j, stringInput.charAt(j)));
             }
         }
-        return grids;
+        return cells;
     }
 
     @Override
-    public void play(Grid grid){
-        if(grid.getDisplayChar() == State.FLAG.getActionChar()){
-            flag(grid);
+    public void play(Cell cell) {
+        if (cell.getInputChar() == State.FLAG.getActionChar()) {
+            flag(cell);
             return;
         }
-        open(grid);
+        open(cell);
     }
 
     @Override
-    public void flag(Grid grid){
-        Grid openedCell = grids.get(grid.getRow() * dimension + grid.getColumn());
-        openedCell.setDisplayChar(state.FLAG.getActionChar());
+    public void flag(Cell cell) {
+        Cell openedCell = cells.get(cell.getRow() * dimension + cell.getColumn());
+        openedCell.setState(state.FLAG);
 
-        if(openedCell.getIsMine()){
+        if (openedCell.getIsMine()) {
             countOfCorrectGrids++;
         }
-
     }
 
     @Override
-    public void open(Grid grid) {
-        Grid openedCell = grids.get(grid.getRow() * dimension + grid.getColumn());
-        if(openedCell.getIsMine()){
+    public void open(Cell cell) {
+        Cell openedCell = cells.get(cell.getRow() * dimension + cell.getColumn());
+        if (openedCell.getIsMine()) {
             System.out.println(MineGridStatus.GAME_LOSS.status());
         }
-        if(openedCell.getDisplayChar() != State.OPEN.getActionChar()) {
-            openedCell.setDisplayChar(state.OPEN.getActionChar());
+        if (openedCell.getState() != State.OPEN) {
+            openedCell.setState(state.OPEN);
             countOfCorrectGrids++;
         }
     }
 
     @Override
     public boolean isGameOver() {
-        if(countOfCorrectGrids == noOfGrids()) {
+        if (countOfCorrectGrids == noOfGrids()) {
             System.out.println(MineGridStatus.GAME_WIN.status());
             return true;
         }
         System.out.println(MineGridStatus.CONTINUE.status());
         return false;
-   }
+    }
 
-    public List<Grid> getGrids() {
-        return grids;
+    public List<Cell> getCells() {
+        return cells;
     }
 
     public int getDimension() {
@@ -82,6 +81,6 @@ public class MineFieldImpl implements MineField{
     }
 
     private int noOfGrids() {
-        return dimension*dimension;
+        return dimension * dimension;
     }
 }
