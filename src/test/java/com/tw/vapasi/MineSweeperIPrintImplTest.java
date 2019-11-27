@@ -6,8 +6,7 @@ public class MineSweeperIPrintImplTest {
     @Test
     void shouldNotRevealMineFields() {
         String inputString0 = "xx,xm";
-        MineFieldImpl mineField0 = new MineFieldImpl();
-        mineField0.setMineField(inputString0);
+        MineFieldImpl mineField0 = new MineFieldImpl(inputString0);
         MineFieldIPrintImpl mineSweeperIPrint0 = new MineFieldIPrintImpl();
         mineSweeperIPrint0.print(mineField0);
     }
@@ -15,9 +14,8 @@ public class MineSweeperIPrintImplTest {
     @Test
     void shouldDisplay0ForOpenAndFForFlag() {
         String inputString = "xx,xm";
-        MineFieldImpl mineField = new MineFieldImpl();
+        MineFieldImpl mineField = new MineFieldImpl(inputString);
         MineFieldIPrintImpl mineSweeperIPrint = new MineFieldIPrintImpl();
-        mineField.setMineField(inputString);
 
         Cell cell1 = new Cell(0, 0, State.FLAG.getActionChar());
         mineField.play(cell1);

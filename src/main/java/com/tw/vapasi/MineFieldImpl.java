@@ -6,29 +6,14 @@ import java.util.List;
 public class MineFieldImpl implements MineField {
     private List<Cell> cells;
     private int dimension;
-    private Cell cell;
+    private StringParserCommand stringParserCommand;
     public State state;
     private int countOfCorrectGrids;
 
-    public MineFieldImpl() {
-    }
-
-    public MineFieldImpl(Cell cell, State state) {
-        this.cell = cell;
-        this.state = state;
-    }
-
-    public List<Cell> setMineField(String inputString) {
-        cells = new ArrayList<Cell>();
+    public MineFieldImpl(String inputString) {
+        cells=stringParserCommand.setMineField(inputString);
         final String[] input = inputString.split(",");
         dimension = input.length;
-        for (int i = 0; i < dimension; i++) {
-            String stringInput = input[i];
-            for (int j = 0; j < dimension; j++) {
-                cells.add(new Cell(i, j, stringInput.charAt(j)));
-            }
-        }
-        return cells;
     }
 
     @Override

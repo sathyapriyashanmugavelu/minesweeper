@@ -5,8 +5,7 @@ public class PlayMineSweeper {
         //Game 1
         System.out.println("-----------------GAME STARTS------------------");
         String inputString0 = "m";
-        MineFieldImpl mineField0 = new MineFieldImpl();
-        mineField0.setMineField(inputString0);
+        MineFieldImpl mineField0 = new MineFieldImpl(inputString0);
         MineFieldIPrintImpl mineSweeperIPrint0 = new MineFieldIPrintImpl();
 
         Cell cell0 = new Cell(0, 0, State.OPEN.getActionChar());
@@ -15,9 +14,8 @@ public class PlayMineSweeper {
         //Game 2
         System.out.println("-----------------GAME STARTS------------------");
         String inputString = "xx,xm";
-        MineFieldImpl mineField = new MineFieldImpl();
+        MineFieldImpl mineField = new MineFieldImpl(inputString);
         MineFieldIPrintImpl mineSweeperIPrint = new MineFieldIPrintImpl();
-        mineField.setMineField(inputString);
 
         Cell cell1 = new Cell(0, 0, State.OPEN.getActionChar());
         mineField.play(cell1);
